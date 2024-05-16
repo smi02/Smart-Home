@@ -2,6 +2,7 @@
 npm init
 
 npm install express mongoose morgan body-parser bcrypt jsonwebtoken react-router-dom cors dotenv cookie-parser
+
 npm i nodemon --save-dev
 
 // frontend
