@@ -1,0 +1,14 @@
+// backend
+npm init
+
+npm install express mongoose morgan body-parser bcrypt jsonwebtoken react-router-dom cors dotenv cookie-parser
+npm i nodemon --save-dev
+
+// frontend
+npm create vite@latest frontend
+
+npm install -D tailwindcss postcss autoprefixer
+
+npx tailwindcss init -p
+
+npm i react-router-dom axios react-icons react-hot-toast
