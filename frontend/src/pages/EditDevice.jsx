@@ -6,11 +6,14 @@ import { useNavigate, useParams } from "react-router-dom"
 
 const EditDevice = () => {
   const [name, setName] = useState('')
+  const [color, setColor] = useState('')
+  const [namedevice, setNamedevice] = useState('')
   const [topic, setTopic] = useState('')
   const [status, setStatus] = useState('')
-  const [category, setCategory] = useState('')
-  const [color, setColor] = useState('')
+  const [colordevice, setColordevice] = useState('')
+  const [voice, setVoice] = useState('')
   const notification = true
+  const [time, setTime] = useState('')
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
@@ -21,10 +24,13 @@ const EditDevice = () => {
     axios.get(`http://localhost:5555/device/${id}`)
       .then((res) => {
         setName(res.data.name)
+        setColor(res.data.color)
+        setNamedevice(res.data.category.color)
         setTopic(res.data.topic)
         setStatus(res.data.status)
-        setCategory(res.data.category)
-        setColor(res.data.color)
+        setColordevice(res.data.category.color)
+        setVoice(res.data.category.voice)
+        setTime(res.data.category.time)
         setLoading(false)
       })
       .catch((error) => {
@@ -37,11 +43,16 @@ const EditDevice = () => {
   const handleEditDevice = () => {
     const data = {
       name,
-      topic,
-      status,
-      category,
       color,
-      notification
+      category: {
+        namedevice,
+        topic,
+        status,
+        colordevice,
+        voice,
+        notification,
+        time
+      }
     }
     setLoading(true)
     axios
@@ -70,6 +81,18 @@ const EditDevice = () => {
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Color</label>
+          <input type="text" value={color}
+            onChange={(e) => setColor(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full" />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Name Device</label>
+          <input type="text" value={namedevice}
+            onChange={(e) => setNamedevice(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full" />
+        </div>
+        <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Topic</label>
           <input type="text" value={topic}
             onChange={(e) => setTopic(e.target.value)}
@@ -82,15 +105,21 @@ const EditDevice = () => {
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Category</label>
-          <input type="text" value={category}
-            onChange={(e) => setCategory(e.target.value)}
+          <label className="text-xl mr-4 text-gray-500">Color Device</label>
+          <input type="text" value={colordevice}
+            onChange={(e) => setColordevice(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Color</label>
-          <input type="text" value={color}
-            onChange={(e) => setColor(e.target.value)}
+          <label className="text-xl mr-4 text-gray-500">Voice</label>
+          <input type="text" value={voice}
+            onChange={(e) => setVoice(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full" />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Time</label>
+          <input type="text" value={time}
+            onChange={(e) => setTime(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleEditDevice}>Save</button>

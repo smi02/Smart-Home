@@ -37,10 +37,10 @@ const Home = () => {
                 <thead>
                     <tr>
                         <th className='border border-slate-600 rounded-md'>No</th>
-                        <th className='border border-slate-600 rounded-md'>name</th>
+                        <th className='border border-slate-600 rounded-md'>category</th>
+                        <th className='border border-slate-600 rounded-md max-md:hidden'>name</th>
                         <th className='border border-slate-600 rounded-md max-md:hidden'>topic</th>
                         <th className='border border-slate-600 rounded-md max-md:hidden'>status</th>
-                        <th className='border border-slate-600 rounded-md max-md:hidden'>category</th>
                         <th className='border border-slate-600 rounded-md max-md:hidden'>Operation</th>
                     </tr>
                 </thead>
@@ -54,13 +54,13 @@ const Home = () => {
                                 {device.name}
                             </td>
                             <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                {device.topic}
+                                {device.category.name}
                             </td>
                             <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                {device.status}
+                                {device.category.topic}
                             </td>
                             <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                {device.category}
+                                {device.category.status}
                             </td>
                             <td className='border border-slate-700 rounded-md text-center'>
                                 <div className='flex justify-center gap-x-4'>

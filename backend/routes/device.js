@@ -8,11 +8,14 @@ router.post('/', async (req, res, next) => {
     try {
         if (
             !req.body.name ||
-            !req.body.topic ||
-            !req.body.status ||
-            !req.body.category ||
             !req.body.color ||
-            !req.body.notification 
+            !req.body.category.namedevice ||
+            !req.body.category.topic ||
+            !req.body.category.status ||
+            !req.body.category.colordevice ||
+            !req.body.category.voice ||
+            !req.body.category.notification ||
+            !req.body.category.time
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'
@@ -20,11 +23,16 @@ router.post('/', async (req, res, next) => {
         }
         const newDevice = {
             name: req.body.name,
-            topic: req.body.topic,
-            status: req.body.status,
-            category: req.body.category,
             color: req.body.color,
-            notification: req.body.notification
+            category: {
+                name: req.body.category.namedevice,
+                topic: req.body.category.topic,
+                status: req.body.category.status,
+                color: req.body.category.colordevice,
+                voice: req.body.category.voice,
+                notification: req.body.category.notification,
+                time: req.body.category.time
+            }
         }
         const device = await Device.create(newDevice)
         return res.status(201).send(device)
@@ -68,11 +76,14 @@ router.put('/:id', async (req, res, next) => {
     try {
         if (
             !req.body.name ||
-            !req.body.topic ||
-            !req.body.status ||
-            !req.body.category ||
             !req.body.color ||
-            !req.body.notification
+            !req.body.category.namedevice ||
+            !req.body.category.topic ||
+            !req.body.category.status ||
+            !req.body.category.colordevice ||
+            !req.body.category.voice ||
+            !req.body.category.notification ||
+            !req.body.category.time
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'
