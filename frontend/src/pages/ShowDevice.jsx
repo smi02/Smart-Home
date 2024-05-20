@@ -32,7 +32,6 @@ const ShowDevice = () => {
         console.log(error);
       })
   }, [])
-  console.log(device);
 
   return (
     <div className='p-4'>
