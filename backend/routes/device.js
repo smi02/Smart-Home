@@ -7,31 +7,33 @@ import { Device } from '../models/Device.js';
 router.post('/', async (req, res, next) => {
     try {
         if (
-            !req.body.name ||
-            !req.body.color ||
-            !req.body.category.namedevice ||
+            !req.body.namecategory ||
+            !req.body.colorcategory ||
+            !req.body.category.name ||
             !req.body.category.topic ||
             !req.body.category.status ||
-            !req.body.category.colordevice ||
+            !req.body.category.color ||
             !req.body.category.voice ||
             !req.body.category.notification ||
-            !req.body.category.time
+            !req.body.category.time ||
+            !req.body.category.icon
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'
             })
         }
         const newDevice = {
-            name: req.body.name,
-            color: req.body.color,
+            namecategory: req.body.namecategory,
+            colorcategory: req.body.colorcategory,
             category: {
-                name: req.body.category.namedevice,
+                name: req.body.category.name,
                 topic: req.body.category.topic,
                 status: req.body.category.status,
-                color: req.body.category.colordevice,
+                color: req.body.category.color,
                 voice: req.body.category.voice,
                 notification: req.body.category.notification,
-                time: req.body.category.time
+                time: req.body.category.time,
+                icon: req.body.category.icon
             }
         }
         const device = await Device.create(newDevice)
@@ -73,17 +75,20 @@ router.get('/:id', async (req, res, next) => {
 
 // Update one device
 router.put('/:id', async (req, res, next) => {
+    const result = req.body
     try {
         if (
-            !req.body.name ||
-            !req.body.color ||
-            !req.body.category.namedevice ||
+            !req.body.namecategory ||
+            !req.body.colorcategory ||
+            !req.body.category.name ||
             !req.body.category.topic ||
             !req.body.category.status ||
-            !req.body.category.colordevice ||
+            !req.body.category.color ||
             !req.body.category.voice ||
             !req.body.category.notification ||
-            !req.body.category.time
+            !req.body.category.time ||
+            !req.body.category.icon
+
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'

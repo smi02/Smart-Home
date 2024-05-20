@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const deviceSchema = mongoose.Schema({
-    name: {
+    namecategory: {
         type: String,
         required: true
     },
-    color: {
+    colorcategory: {
         type: String,
         required: true
     },
@@ -35,6 +35,10 @@ const deviceSchema = mongoose.Schema({
             required: true
         },
         time: {
+            type: String,
+            required: true
+        },
+        icon: {
             type: String,
             required: true
         },

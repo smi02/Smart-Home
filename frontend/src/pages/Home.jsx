@@ -51,7 +51,7 @@ const Home = () => {
                                 {index + 1}
                             </td>
                             <td className='border border-slate-700 rounded-md text-center'>
-                                {device.name}
+                                {device.namecategory}
                             </td>
                             <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
                                 {device.category.name}

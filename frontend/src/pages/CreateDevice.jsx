@@ -6,30 +6,32 @@ import { useNavigate } from "react-router-dom"
 
 const CreateDevice = () => {
 
+  const [namecategory, setNamecategory] = useState('')
+  const [colorcategory, setColorcategory] = useState('')
   const [name, setName] = useState('')
-  const [color, setColor] = useState('')
-  const [namedevice, setNamedevice] = useState('')
   const [topic, setTopic] = useState('')
   const [status, setStatus] = useState('')
-  const [colordevice, setColordevice] = useState('')
+  const [color, setColor] = useState('')
   const [voice, setVoice] = useState('')
   const notification = true
   const [time, setTime] = useState('')
+  const [icon, setIcon] = useState('')
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
   const handleSaveDevice = () => {
     const data = {
-      name,
-      color,
+      namecategory,
+      colorcategory,
       category: {
-        namedevice,
+        name,
         topic,
         status,
-        colordevice,
+        color,
         voice,
         notification,
-        time
+        time,
+        icon
       }
     }
     setLoading(true)
@@ -53,21 +55,21 @@ const CreateDevice = () => {
       {loading ? <Spinner /> : ''}
       <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
         <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Name</label>
-          <input type="text" value={name}
-            onChange={(e) => setName(e.target.value)}
+          <label className="text-xl mr-4 text-gray-500">Name category</label>
+          <input type="text" value={namecategory}
+            onChange={(e) => setNamecategory(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Color</label>
-          <input type="text" value={color}
-            onChange={(e) => setColor(e.target.value)}
+          <label className="text-xl mr-4 text-gray-500">Color category</label>
+          <input type="text" value={colorcategory}
+            onChange={(e) => setColorcategory(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Name Device</label>
-          <input type="text" value={namedevice}
-            onChange={(e) => setNamedevice(e.target.value)}
+          <input type="text" value={name}
+            onChange={(e) => setName(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
@@ -84,8 +86,8 @@ const CreateDevice = () => {
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Color Device</label>
-          <input type="text" value={colordevice}
-            onChange={(e) => setColordevice(e.target.value)}
+          <input type="text" value={color}
+            onChange={(e) => setColor(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <div className="my-4">
@@ -98,6 +100,12 @@ const CreateDevice = () => {
           <label className="text-xl mr-4 text-gray-500">Time</label>
           <input type="text" value={time}
             onChange={(e) => setTime(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full" />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Icon</label>
+          <input type="text" value={icon}
+            onChange={(e) => setIcon(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full" />
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleSaveDevice}>Save</button>
