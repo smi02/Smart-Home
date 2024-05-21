@@ -8,7 +8,7 @@ const ShowDevice = () => {
   const [device, setDevice] = useState({})
   const [name, setName] = useState('')
   const [topic, setTopic] = useState('')
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState(false)
   const [time, setTime] = useState('')
   const [loading, setLoading] = useState(false)
 

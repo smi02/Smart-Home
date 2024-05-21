@@ -9,7 +9,7 @@ const EditDevice = () => {
   const [colorcategory, setColorcategory] = useState('')
   const [name, setName] = useState('')
   const [topic, setTopic] = useState('')
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState(false)
   const [color, setColor] = useState('')
   const [voice, setVoice] = useState('')
   const notification = true
