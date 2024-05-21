@@ -1,15 +1,19 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
 const historySchema = mongoose.Schema({
-    category: {
+    hcategory: {
         type: String,
         required: true
     },
-    name: {
+    hname: {
         type: String,
         required: true
     },
-    status: {
+    hstatus: {
+        type: Boolean,
+        required: true
+    },
+    hnotification: {
         type: String,
         required: true
     },

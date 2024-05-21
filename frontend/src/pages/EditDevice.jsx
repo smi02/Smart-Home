@@ -15,6 +15,11 @@ const EditDevice = () => {
   const notification = true
   const [time, setTime] = useState('')
   const [icon, setIcon] = useState('')
+
+  const [hcategory, setHcategory] = useState('')
+  const [hname, setHname] = useState('')
+  const [hstatus, setHstatus] = useState(false)
+
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
@@ -33,6 +38,11 @@ const EditDevice = () => {
         setVoice(res.data.category.voice)
         setTime(res.data.category.time)
         setIcon(res.data.category.icon)
+
+        setHcategory(res.data.namecategory)
+        setHname(res.data.category.name)
+        setHstatus(res.data.category.status)
+        
         setLoading(false)
 
       })
@@ -58,6 +68,27 @@ const EditDevice = () => {
         icon
       }
     }
+
+    if (hstatus == 'true') {
+      return setHstatus(true)
+    }
+    if (hstatus == 'false') {
+      return setHstatus(false)
+    }
+
+    const hdata = {
+      hcategory,
+      hname,
+      hstatus
+    }
+
+    axios
+      .post('http://localhost:5555/history', hdata)
+      .catch((error) => {
+        alert('An error happened. Please check console')
+        console.log(error);
+      })
+
     setLoading(true)
     axios
       .put(`http://localhost:5555/device/${id}`, data)
@@ -104,7 +135,10 @@ const EditDevice = () => {
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Status</label>
-          <select name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+          <select name="status" id="status" value={status} onChange={(e) => {
+            setStatus(e.target.value)
+            setHstatus(e.target.value)
+          }}>
             <option value="true">On</option>
             <option value="false">Off</option>
           </select>
