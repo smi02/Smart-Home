@@ -62,7 +62,6 @@ const EditDevice = () => {
     axios
       .put(`http://localhost:5555/device/${id}`, data)
       .then(() => {
-        console.log(data);
         setLoading(false)
         navigate('/')
       })
@@ -105,9 +104,10 @@ const EditDevice = () => {
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Status</label>
-          <input type="text" value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full" />
+          <select name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="true">On</option>
+            <option value="false">Off</option>
+          </select>
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Color Device</label>

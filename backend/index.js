@@ -5,6 +5,7 @@ import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import device from './routes/device.js';
 import auth from './routes/auth.js'
+//import history from './routes/history.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connect } from './cli/publisher.js';
@@ -35,6 +36,7 @@ app.get('/', (request, response) => {
 
 app.use('/device', device);
 app.use('/auth', auth);
+//app.use('/history', history);
 
 
 mongoose.connect(mongoDBURL)

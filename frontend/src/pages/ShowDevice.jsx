@@ -59,7 +59,7 @@ const ShowDevice = () => {
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>status</span>
-            <span>{status}</span>
+            <span>{status ? "on" : "off"}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>time</span>
