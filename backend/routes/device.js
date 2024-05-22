@@ -111,7 +111,6 @@ router.put('/:id', async (req, res, next) => {
         }
 
         const hresult = await History.create(newHistory)
-        console.log(hresult);
 
         const result = await Device.findByIdAndUpdate(id, req.body)
         if (!result) {
