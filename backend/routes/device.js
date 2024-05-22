@@ -11,10 +11,8 @@ router.post('/', async (req, res, next) => {
             !req.body.colorcategory ||
             !req.body.category.name ||
             !req.body.category.topic ||
-            !req.body.category.status ||
             !req.body.category.color ||
             !req.body.category.voice ||
-            !req.body.category.notification ||
             !req.body.category.time ||
             !req.body.category.icon
         ) {
@@ -75,17 +73,14 @@ router.get('/:id', async (req, res, next) => {
 
 // Update one device
 router.put('/:id', async (req, res, next) => {
-    const result = req.body
     try {
         if (
             !req.body.namecategory ||
             !req.body.colorcategory ||
             !req.body.category.name ||
             !req.body.category.topic ||
-            !req.body.category.status ||
             !req.body.category.color ||
             !req.body.category.voice ||
-            !req.body.category.notification ||
             !req.body.category.time ||
             !req.body.category.icon
 
