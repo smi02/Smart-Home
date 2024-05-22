@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import { Device } from '../models/Device.js';
+import { History } from '../models/History.js';
 
 
 // Route for save new sensor
@@ -91,6 +92,27 @@ router.put('/:id', async (req, res, next) => {
         }
 
         const { id } = req.params
+
+        const newcategory = req.body.namecategory
+        const newname = req.body.category.name
+        var checktf = false
+        if (req.body.category.status == "true") {
+            checktf = true
+        } else {
+            checktf = false
+        }
+        const newstatus = checktf ? "on" : "off"
+
+        const newHistory = {
+            hcategory: newcategory,
+            hname: newname,
+            hstatus: req.body.category.status,
+            hnotification: `The ${newcategory} ${newname} is ${newstatus}`
+        }
+
+        const hresult = await History.create(newHistory)
+        console.log(hresult);
+
         const result = await Device.findByIdAndUpdate(id, req.body)
         if (!result) {
             return res.status(404).json({ message: 'Device not found' })
