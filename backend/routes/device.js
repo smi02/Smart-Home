@@ -98,8 +98,10 @@ router.put('/:id', async (req, res, next) => {
         var checktf = false
         if (req.body.category.status == "true") {
             checktf = true
-        } else {
+        } else if (req.body.category.status == "false") {
             checktf = false
+        } else if (req.body.category.status == true) {
+            checktf = true
         }
         const newstatus = checktf ? "on" : "off"
 
