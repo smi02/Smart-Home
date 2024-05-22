@@ -96,13 +96,11 @@ router.put('/:id', async (req, res, next) => {
         const newcategory = req.body.namecategory
         const newname = req.body.category.name
         var checktf = false
-        if (req.body.category.status == "true") {
-            checktf = true
-        } else if (req.body.category.status == "false") {
-            checktf = false
-        } else if (req.body.category.status == true) {
+        
+        if (req.body.category.status == "true" || req.body.category.status == true) {
             checktf = true
         }
+
         const newstatus = checktf ? "on" : "off"
 
         const newHistory = {
