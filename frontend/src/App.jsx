@@ -9,13 +9,12 @@ import Narbar from "./components/Narbar"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import { Toaster } from 'react-hot-toast'
-import { UserContextProvider } from "../context/userContext"
 import Dashboard from "./pages/Dashboard"
 
 
 const App = () => {
   return (
-    <UserContextProvider>
+    <>
       <Narbar />
       <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
       <Routes>
@@ -28,7 +27,7 @@ const App = () => {
         <Route path="/device/edit/:id" element={<EditDevice />} />
         <Route path="/device/delete/:id" element={<DeleteDevice />} />
       </Routes>
-    </UserContextProvider>
+    </>
   )
 }
 

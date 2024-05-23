@@ -1,15 +1,15 @@
 import express from 'express'
 const router = express.Router()
-import { Security } from '../models/Security.js'
+import { Temp } from '../models/Temp.js'
 
-// Show all security
+// Show all temp
 router.get('/', async (req, res, next) => {
     try {
-        const securitys = await Security.find({})
+        const temps = await Temp.find({})
 
         return res.status(200).json({
-            count: securitys.length,
-            data: securitys
+            count: temps.length,
+            data: temps
         })
     } catch (error) {
         console.log(error.message);
@@ -17,55 +17,53 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// Route for save new security
+// Route for save new temp
 router.post('/', async (req, res, next) => {
     try {
         if (
-            !req.body.name ||
-            !req.body.topic ||
-            !req.body.password 
+            !req.body.topicdevice ||
+            !req.body.statusdevice ||
+            !req.body.notificationdevice
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'
             })
         }
-        const newSecurity = {
-            name: req.body.name,
-            topic: req.body.topic,
-            notification: req.body.notification,
-            password: req.body.password,
-            primaryPassword: req.body.primaryPassword
+        const newTemp = {
+            topicdevice: req.body.topicdevice,
+            statusdevice: req.body.statusdevice,
+            notificationdevice: req.body.notificationdevice
         }
 
-        const security = await Security.create(newSecurity)
-        return res.status(201).send(security)
+        const temp = await Temp.create(newTemp)
+        return res.status(201).send(temp)
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message })
     }
 })
 
-// Show one security
+// Show one temp
 router.get('/:id', async (req, res, next) => {
     try {
         const { id } = req.params
 
-        const security = await Security.findById(id)
+        const temp = await Temp.findById(id)
 
-        return res.status(200).json(security)
+        return res.status(200).json(temp)
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message })
     }
 })
 
-// Update one security
+// Update one temp
 router.put('/:id', async (req, res, next) => {
     try {
         if (
-            !req.body.name ||
-            !req.body.topic ||
-            !req.body.password 
+            !req.body.topicdevice ||
+            !req.body.statusdevice ||
+            !req.body.notificationdevice
 
         ) {
             return res.status(400).send({
@@ -75,27 +73,27 @@ router.put('/:id', async (req, res, next) => {
 
         const { id } = req.params
 
-        const result = await Security.findByIdAndUpdate(id, req.body)
+        const result = await Temp.findByIdAndUpdate(id, req.body)
         if (!result) {
-            return res.status(404).json({ message: 'Security not found' })
+            return res.status(404).json({ message: 'Temp not found' })
         }
-        return res.status(200).send({ message: 'Security update successfully' })
+        return res.status(200).send({ message: 'Temp update successfully' })
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message })
     }
 })
 
-// Delete one security
+// Delete one temp
 router.delete('/:id', async (req, res, next) => {
     try {
         const { id } = req.params
 
-        const result = await Security.findByIdAndDelete(id)
+        const result = await Temp.findByIdAndDelete(id)
         if (!result) {
-            return res.status(404).json({ message: 'Security not found' })
+            return res.status(404).json({ message: 'Temp not found' })
         }
-        return res.status(200).send({ message: 'Security delete successfully' })
+        return res.status(200).send({ message: 'Temp delete successfully' })
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message })

@@ -18,8 +18,7 @@ const securitySchema = mongoose.Schema({
         required: true
     },
     primaryPassword: {
-        type: String,
-        required: true
+        type: String
     },
 },  { timestamps: true })
 

@@ -74,8 +74,9 @@ export const loginUser = async (req, res) => {
 }
 
 // Profile
-export const getProfile = (req, res) => {
+export const getProfile = (req, res, next) => {
     const { token } = req.cookies
+    console.log(token)
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
             if (err) throw err;
@@ -84,4 +85,10 @@ export const getProfile = (req, res) => {
     } else {
         res.json(null)
     }
+    next()
+}
+
+export const getUser = (req, res) => {
+    const userId = req.id
+    console.log(userId);
 }

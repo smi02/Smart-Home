@@ -7,6 +7,7 @@ import device from './routes/device.js';
 import auth from './routes/auth.js'
 import history from './routes/history.js'
 import security from './routes/security.js'
+import temp from './routes/temp.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connect } from './cli/publisher.js';
@@ -39,6 +40,7 @@ app.use('/device', device);
 app.use('/auth', auth);
 app.use('/history', history);
 app.use('/security', security);
+app.use('/temp', temp);
 
 
 mongoose.connect(mongoDBURL)
