@@ -19,10 +19,10 @@ const ShowDevice = () => {
     axios.get(`http://localhost:5555/device/${id}`)
       .then((res) => {
         setDevice(res.data)
-        setName(res.data.category.name)
-        setTopic(res.data.category.topic)
-        setStatus(res.data.category.status)
-        setTime(res.data.category.time)
+        setName(res.data.name)
+        setTopic(res.data.topic)
+        setStatus(res.data.status)
+        setTime(res.data.time)
         setLoading(false)
 
       })

@@ -55,13 +55,13 @@ const Home = () => {
                                     {device.namecategory}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                    {device.category.name}
+                                    {device.name}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                    {device.category.topic}
+                                    {device.topic}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                    <p>{device.category.status ? "on" : "off"}</p>
+                                    <p>{device.status ? "on" : "off"}</p>
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4'>

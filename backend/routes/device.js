@@ -6,16 +6,17 @@ import { History } from '../models/History.js';
 
 // Route for save new sensor
 router.post('/', async (req, res, next) => {
+    console.log(req.body);
     try {
         if (
             !req.body.namecategory ||
             !req.body.colorcategory ||
-            !req.body.category.name ||
-            !req.body.category.topic ||
-            !req.body.category.color ||
-            !req.body.category.voice ||
-            !req.body.category.time ||
-            !req.body.category.icon
+            !req.body.name ||
+            !req.body.topic ||
+            !req.body.color ||
+            !req.body.voice ||
+            !req.body.time ||
+            !req.body.icon
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'
@@ -24,16 +25,15 @@ router.post('/', async (req, res, next) => {
         const newDevice = {
             namecategory: req.body.namecategory,
             colorcategory: req.body.colorcategory,
-            category: {
-                name: req.body.category.name,
-                topic: req.body.category.topic,
-                status: req.body.category.status,
-                color: req.body.category.color,
-                voice: req.body.category.voice,
-                notification: req.body.category.notification,
-                time: req.body.category.time,
-                icon: req.body.category.icon
-            }
+            name: req.body.name,
+            topic: req.body.topic,  
+            status: req.body.status,
+            color: req.body.color,
+            voice: req.body.voice,
+            notification: req.body.notification,
+            time: req.body.time,
+            icon: req.body.icon
+
         }
         const device = await Device.create(newDevice)
         return res.status(201).send(device)
@@ -78,12 +78,12 @@ router.put('/:id', async (req, res, next) => {
         if (
             !req.body.namecategory ||
             !req.body.colorcategory ||
-            !req.body.category.name ||
-            !req.body.category.topic ||
-            !req.body.category.color ||
-            !req.body.category.voice ||
-            !req.body.category.time ||
-            !req.body.category.icon
+            !req.body.name ||
+            !req.body.topic ||
+            !req.body.color ||
+            !req.body.voice ||
+            !req.body.time ||
+            !req.body.icon
 
         ) {
             return res.status(400).send({
@@ -94,10 +94,10 @@ router.put('/:id', async (req, res, next) => {
         const { id } = req.params
 
         const newcategory = req.body.namecategory
-        const newname = req.body.category.name
+        const newname = req.body.name
         var checktf = false
-        
-        if (req.body.category.status == "true" || req.body.category.status == true) {
+
+        if (req.body.status == "true" || req.body.status == true) {
             checktf = true
         }
 
@@ -106,7 +106,7 @@ router.put('/:id', async (req, res, next) => {
         const newHistory = {
             hcategory: newcategory,
             hname: newname,
-            hstatus: req.body.category.status,
+            hstatus: req.body.status,
             hnotification: `The ${newcategory} ${newname} is ${newstatus}`
         }
 

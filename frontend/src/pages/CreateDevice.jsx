@@ -23,16 +23,14 @@ const CreateDevice = () => {
     const data = {
       namecategory,
       colorcategory,
-      category: {
-        name,
-        topic,
-        status,
-        color,
-        voice,
-        notification,
-        time,
-        icon
-      }
+      name,
+      topic,
+      status,
+      color,
+      voice,
+      notification,
+      time,
+      icon
     }
     setLoading(true)
     axios

@@ -9,7 +9,7 @@ import Narbar from "./components/Narbar"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import { Toaster } from 'react-hot-toast'
-import Dashboard from "./pages/Dashboard"
+import User from "./pages/User"
 
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user" element={<User />} />
         <Route path="/device/details/:id" element={<ShowDevice />} />
         <Route path="/device/create" element={<CreateDevice />} />
         <Route path="/device/edit/:id" element={<EditDevice />} />

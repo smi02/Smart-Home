@@ -58,9 +58,9 @@ export const loginUser = async (req, res) => {
         // check if password match
         const match = await comparePassword(password, user.password)
         if (match) {
-            jwt.sign({ email: user.email, id: user._id, name: user.name }, process.env.JWT_SECRET, {expiresIn: "1h"}, (err, token) => {
+            jwt.sign({ email: user.email, id: user._id, name: user.name }, process.env.JWT_SECRET, {}, (err, token) => {
                 if (err) throw err;
-                res.cookie('token', token).json({ user , accessToken: token})
+                res.cookie('token', token).json({ user , token: token})
             })
         }
         if (!match) {
@@ -74,9 +74,8 @@ export const loginUser = async (req, res) => {
 }
 
 // Profile
-export const getProfile = (req, res, next) => {
+export const getProfile = (req, res) => {
     const { token } = req.cookies
-    console.log(token)
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
             if (err) throw err;
@@ -85,10 +84,4 @@ export const getProfile = (req, res, next) => {
     } else {
         res.json(null)
     }
-    next()
-}
-
-export const getUser = (req, res) => {
-    const userId = req.id
-    console.log(userId);
 }
