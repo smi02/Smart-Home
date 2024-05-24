@@ -27,13 +27,13 @@ const EditDevice = () => {
       .then((res) => {
         setNamecategory(res.data.namecategory)
         setColorcategory(res.data.colorcategory)
-        setName(res.data.name)
-        setTopic(res.data.topic)
-        setStatus(res.data.status)
-        setColor(res.data.color)
-        setVoice(res.data.voice)
-        setTime(res.data.time)
-        setIcon(res.data.icon)
+        setName(res.data.category.name)
+        setTopic(res.data.category.topic)
+        setStatus(res.data.category.status)
+        setColor(res.data.category.color)
+        setVoice(res.data.category.voice)
+        setTime(res.data.category.time)
+        setIcon(res.data.category.icon)
 
         setLoading(false)
 
@@ -47,7 +47,7 @@ const EditDevice = () => {
 
   const handleEditDevice = () => {
 
-    if (status === "true") {
+    if (status === "true") { 
       setStatus(true)
     } else {
       setStatus(false)
@@ -56,14 +56,16 @@ const EditDevice = () => {
     const data = {
       namecategory,
       colorcategory,
-      name,
-      topic,
-      status,
-      color,
-      voice,
-      notification,
-      time,
-      icon
+      category: {
+        name,
+        topic,
+        status,
+        color,
+        voice,
+        notification,
+        time,
+        icon
+      }
     }
 
     setLoading(true)
@@ -112,8 +114,8 @@ const EditDevice = () => {
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Status</label>
-          <select name="status" id="status" value={status}
-            onChange={(e) => setStatus(e.target.value)}>
+          <select name="status" id="status" value={status} 
+          onChange={(e) => setStatus(e.target.value)}>
             <option value="true">On</option>
             <option value="false">Off</option>
           </select>

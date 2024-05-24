@@ -1,15 +1,27 @@
 import mongoose from "mongoose";
 
 const tempSchema = mongoose.Schema({
-    topicdevice: {
+    topictemp: {
         type: String,
         required: true
     },
-    statusdevice: {
+    statustemp: {
         type: String,
         required: true
     },
-    notificationdevice: {
+    notificationtemp: {
+        type: String,
+        required: true
+    },
+    topichumi: {
+        type: String,
+        required: true
+    },
+    statushumi: {
+        type: String,
+        required: true
+    },
+    notificationhumi: {
         type: String,
         required: true
     },

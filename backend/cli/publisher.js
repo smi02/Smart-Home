@@ -40,50 +40,50 @@ export const connect = async () => {
     client.on("message", async (topicdevice, message) => {
 
       if (topicdevice == 'SmartHome/temperature') {
-        const temp = await Temp.findOne({ topicdevice })
-        temp.statusdevice = message;
+        const temp = await Temp.findOne({ topictemp: topicdevice })
+        temp.statustemp = message;
         if (message > 0 && message < 10) {
-          temp.notificationdevice = "Very cold";
+          temp.notificationtemp = "Very cold";
         } else if (message >= 10 && message < 17) {
-          temp.notificationdevice = "Cold";
+          temp.notificationtemp = "Cold";
         } else if (message >= 17 && message < 23) {
-          temp.notificationdevice = "Cool";
+          temp.notificationtemp = "Cool";
         } else if (message >= 23 && message < 27) {
-          temp.notificationdevice = "Pleasant";
+          temp.notificationtemp = "Pleasant";
         } else if (message >= 27 && message < 31) {
-          temp.notificationdevice = "Warm";
+          temp.notificationtemp = "Warm";
         } else if (message >= 31 && message < 35) {
-          temp.notificationdevice = "Hot";
+          temp.notificationtemp = "Hot";
         } else if (message >= 35 && message < 40) {
-          temp.notificationdevice = "Very hot";
+          temp.notificationtemp = "Very hot";
         } else if (message >= 40) {
-          temp.notificationdevice = "Extremely hot";
+          temp.notificationtemp = "Extremely hot";
         } else {
-          temp.notificationdevice = "Input data is corrupted";
+          temp.notificationtemp = "Input data is corrupted";
         }
         await temp.save();
         return console.log(`Temp update successfully "${topicdevice}": ${message}`);
       }
 
       if (topicdevice == 'SmartHome/humidity') {
-        const temp = await Temp.findOne({ topicdevice })
-        temp.statusdevice = message;
+        const temp = await Temp.findOne({ topichumi: topicdevice })
+        temp.statushumi = message;
         if (message > 0 && message < 30) {
-          temp.notificationdevice = "Very dry";
+          temp.notificationhumi = "Very dry";
         } else if (message >= 30 && message < 41) {
-          temp.notificationdevice = "Dry";
+          temp.notificationhumi = "Dry";
         } else if (message >= 41 && message < 51) {
-          temp.notificationdevice = "Slightly dry";
+          temp.notificationhumi = "Slightly dry";
         } else if (message >= 51 && message < 61) {
-          temp.notificationdevice = "Comfortable";
+          temp.notificationhumi = "Comfortable";
         } else if (message >= 61 && message < 71) {
-          temp.notificationdevice = "Slightly humid";
+          temp.notificationhumi = "Slightly humid";
         } else if (message >= 71 && message < 81) {
-          temp.notificationdevice = "Humid";
+          temp.notificationhumi = "Humid";
         } else if (message >= 81) {
-          temp.notificationdevice = "Very humid";
+          temp.notificationhumi = "Very humid";
         } else {
-          temp.notificationdevice = "Input data is corrupted";
+          temp.notificationhumi = "Input data is corrupted";
         }
         await temp.save();
         return console.log(`Temp update successfully "${topicdevice}": ${message}`);

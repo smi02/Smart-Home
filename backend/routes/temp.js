@@ -21,18 +21,24 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         if (
-            !req.body.topicdevice ||
-            !req.body.statusdevice ||
-            !req.body.notificationdevice
+            !req.body.topictemp ||
+            !req.body.statustemp ||
+            !req.body.notificationtemp ||
+            !req.body.topichumi ||
+            !req.body.statushumi ||
+            !req.body.notificationhumi
         ) {
             return res.status(400).send({
                 message: 'Send all req fields'
             })
         }
         const newTemp = {
-            topicdevice: req.body.topicdevice,
-            statusdevice: req.body.statusdevice,
-            notificationdevice: req.body.notificationdevice
+            topictemp: req.body.topictemp,
+            statustemp: req.body.statustemp,
+            notificationtemp: req.body.notificationtemp,
+            topichumi: req.body.topichumi,
+            statushumi: req.body.statushumi,
+            notificationhumi: req.body.notificationhumi
         }
 
         const temp = await Temp.create(newTemp)
@@ -61,9 +67,12 @@ router.get('/:id', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
     try {
         if (
-            !req.body.topicdevice ||
-            !req.body.statusdevice ||
-            !req.body.notificationdevice
+            !req.body.topictemp ||
+            !req.body.statustemp ||
+            !req.body.notificationtemp ||
+            !req.body.topichumi ||
+            !req.body.statushumi ||
+            !req.body.notificationhumi
 
         ) {
             return res.status(400).send({
