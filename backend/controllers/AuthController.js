@@ -2,8 +2,19 @@ import { User } from "../models/User.js";
 import { hashPassword, comparePassword } from "../helpers/auth.js";
 import jwt from "jsonwebtoken";
 
-export const test = (req, res) => {
-    res.json('test is working')
+// get all user
+export const user = async (req, res) => {
+    try {
+        const users = await User.find({})
+
+        return res.status(200).json({
+            count: users.length,
+            data: users
+        })
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message })
+    }
 }
 
 
@@ -83,5 +94,19 @@ export const getProfile = (req, res) => {
         })
     } else {
         res.json(null)
+    }
+}
+
+// get id user
+export const getUser = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const user = await User.findById(id)
+
+        return res.status(200).json(user)
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message })
     }
 }
