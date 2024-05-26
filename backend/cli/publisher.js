@@ -1,14 +1,10 @@
 import dotenv from 'dotenv';
 import mqtt from 'mqtt';
 import { Temp } from '../models/Temp.js';
+import { MQTT_BROKER_HOST, MQTT_BROKER_PORT, MQTT_BROKER_PROTOCOL, MQTT_PASSWORD, MQTT_USERNAME } from '../config.js';
 
 dotenv.config();
 
-const MQTT_BROKER_HOST = process.env.MQTT_BROKER_HOST;
-const MQTT_BROKER_PORT = process.env.MQTT_BROKER_PORT;
-const MQTT_BROKER_PROTOCOL = process.env.MQTT_BROKER_PROTOCOL;
-const MQTT_USERNAME = process.env.MQTT_USERNAME;
-const MQTT_PASSWORD = process.env.MQTT_PASSWORD;
 
 const options = {
   host: MQTT_BROKER_HOST,
