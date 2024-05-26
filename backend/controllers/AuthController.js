@@ -70,10 +70,7 @@ export const loginUser = async (req, res) => {
         // check if password match
         const match = await comparePassword(password, user.password)
         if (match) {
-            jwt.sign({ email: user.email, id: user._id, name: user.name }, JWT_SECRET, {}, (err, token) => {
-                if (err) throw err;
-                res.cookie('token', token).json({ user , token: token})
-            })
+            res.json({ user })
         }
         if (!match) {
             res.json({
