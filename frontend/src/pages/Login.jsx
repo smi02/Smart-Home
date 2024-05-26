@@ -18,8 +18,8 @@ const Login = () => {
       if (data.error) {
         toast.error(data.error)
       } else {
+        navigate(`/user/${data.user._id}`)
         setData({})
-        navigate('/user')
       }
     } catch (error) {
       console.log(error);

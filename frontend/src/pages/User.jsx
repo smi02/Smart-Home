@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 export default function User() {
 
+  const { id } = useParams()
+
   const [user, setUser] = useState()
 
-  const sendRequest = async () => {
-    const res = await axios.get('http://localhost:5555/auth/profile')
-      .catch(err => console.log(err))
-    const data = await res.data
-    return data
-  }
   useEffect(() => {
-    sendRequest().then((data) => setUser(data.user))
+    axios.get(`http://localhost:5555/auth/${id}`)
+    .then((res) => {
+      setUser(res.data)
+    })
+      .catch(err => console.log(err))
   }, [])
 
   return (
