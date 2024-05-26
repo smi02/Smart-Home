@@ -1,9 +1,7 @@
-import dotenv from 'dotenv';
 import mqtt from 'mqtt';
 import { Temp } from '../models/Temp.js';
 import { MQTT_BROKER_HOST, MQTT_BROKER_PORT, MQTT_BROKER_PROTOCOL, MQTT_PASSWORD, MQTT_USERNAME } from '../config.js';
 
-dotenv.config();
 
 
 const options = {

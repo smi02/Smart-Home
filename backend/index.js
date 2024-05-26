@@ -1,6 +1,4 @@
 import express from 'express';
-import * as dotenv from 'dotenv';
-dotenv.config();
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import device from './routes/device.js';
