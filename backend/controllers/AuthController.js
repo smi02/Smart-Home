@@ -1,6 +1,7 @@
 import { User } from "../models/User.js";
 import { hashPassword, comparePassword } from "../helpers/auth.js";
 import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../config.js";
 
 // get all user
 export const user = async (req, res) => {
@@ -69,7 +70,7 @@ export const loginUser = async (req, res) => {
         // check if password match
         const match = await comparePassword(password, user.password)
         if (match) {
-            jwt.sign({ email: user.email, id: user._id, name: user.name }, process.env.JWT_SECRET, {}, (err, token) => {
+            jwt.sign({ email: user.email, id: user._id, name: user.name }, JWT_SECRET, {}, (err, token) => {
                 if (err) throw err;
                 res.cookie('token', token).json({ user , token: token})
             })
