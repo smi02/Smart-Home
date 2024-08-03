@@ -6,9 +6,10 @@ import auth from './routes/auth.js'
 import history from './routes/history.js'
 import security from './routes/security.js'
 import temp from './routes/temp.js'
+import semester from './routes/semester.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { connect } from './cli/publisher.js';
+// import { connect } from './cli/publisher.js';
 
 const app = express();
 
@@ -39,14 +40,15 @@ app.use('/auth', auth);
 app.use('/history', history);
 app.use('/security', security);
 app.use('/temp', temp);
-
+app.use('/semester', semester);
 
 mongoose.connect(mongoDBURL)
     .then(() => {
         console.log('App connected to database');
         app.listen(PORT, () => {
-            connect();
+            // connect();
             console.log(`Server is running on port ${PORT}`);
+            console.log('http://localhost:5555/semester');
         })
     })
     .catch((error) => {
