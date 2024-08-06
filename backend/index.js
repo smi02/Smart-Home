@@ -7,6 +7,7 @@ import history from './routes/history.js'
 import security from './routes/security.js'
 import temp from './routes/temp.js'
 import semester from './routes/semester.js'
+import chapter from './routes/chapter.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 // import { connect } from './cli/publisher.js';
@@ -41,6 +42,7 @@ app.use('/history', history);
 app.use('/security', security);
 app.use('/temp', temp);
 app.use('/semester', semester);
+app.use('/chapter', chapter);
 
 mongoose.connect(mongoDBURL)
     .then(() => {
@@ -48,7 +50,7 @@ mongoose.connect(mongoDBURL)
         app.listen(PORT, () => {
             // connect();
             console.log(`Server is running on port ${PORT}`);
-            console.log('http://localhost:5555/semester');
+            console.log('http://localhost:5555/chapter');
         })
     })
     .catch((error) => {
